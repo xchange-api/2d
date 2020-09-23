@@ -1,0 +1,46 @@
+<body></body>
+<script src="./pixi-legacy.js"></script>
+<script>
+var app = new PIXI.Application({
+  antialias: true,
+  autoDensity: true
+});
+
+	document.body.appendChild(app.view);
+
+	//const container = new PIXI.Container();
+	const container = new PIXI.ParticleContainer (1000*1000);
+
+	var graphic = new PIXI.Graphics()
+	.beginFill(0x00ffcc)
+	//.lineStyle(1, 0x00ffcc)
+	.drawRoundedRect(0, 0, 20, 20, 3)
+	//.beginHole()
+	//.drawPolygon([10, 10, 190, 10, 190, 290, 10, 290])
+	//.endHole()
+
+ 
+  
+	//container.addChild(graphic);
+
+  
+	let texture = app.renderer.generateTexture(graphic);
+	
+	PIXI.Texture.addToCache(texture, "4399")
+	for(var i = 0; i < 1000; i++) {
+		for(var j = 0; j < 1000; j++) {
+			let sprite = new PIXI.Sprite(PIXI.Texture.from("4399"));
+			sprite.position.set(i*1,j*1);
+			container.addChild(sprite);
+		}
+	}
+	
+	
+		
+  
+	app.stage.addChild(container);
+
+  
+
+
+</script>

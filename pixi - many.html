@@ -1,0 +1,32 @@
+<body></body>
+<script src="./pixi-legacy.js"></script>
+<script>
+	console.time("10w")
+	var app = new PIXI.Application({
+	  antialias: true,
+	  autoDensity: true
+	});
+	document.body.appendChild(app.view);
+
+	var deta = 0.0001
+	  
+	
+	for (var x = deta; x < 100; x+=deta) {
+		var graphic = new PIXI.Graphics()
+		  .beginFill(0x00ffcc)
+		  .lineStyle(1, 0x00ffcc)
+		  .drawRect(x, 10, 1, 1)
+		  
+		app.stage.addChild(graphic);
+	}
+	console.timeEnd("10w")
+  
+  
+	//var renderer = new PIXI.CanvasRenderer();
+	//renderer.render(graphic);
+	
+
+  
+
+
+</script>

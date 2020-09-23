@@ -1,0 +1,56 @@
+<body></body>
+<script src="./pixi-legacy.js"></script>
+<script>
+var app = new PIXI.Application({
+  antialias: true,
+  autoDensity: true
+});
+document.body.appendChild(app.view);
+
+var graphic = new PIXI.Graphics()
+  .beginFill(0x00ffcc)
+  //.lineStyle(1, 0x00ffcc)
+  .drawRoundedRect(0, 0, 10, 7, 2)
+  //.beginHole()
+  //.drawPolygon([10, 10, 190, 10, 190, 290, 10, 290])
+  //.endHole()
+  .beginHole()
+  .drawRoundedRect(1, 1, 8, 5, 2)
+  .endHole()
+  
+  .beginHole()
+  .drawRect(4, 0, 2, 1)
+  .endHole()
+  ;
+  
+  graphic.position.set(100,100)
+
+  graphic.scale.set(10)
+  
+  //var renderer = app.renderer;
+  //renderer.render(app.stage);
+  //app.stage.addChild(graphic);
+  
+  var renderer = new PIXI.CanvasRenderer();
+  renderer.render(graphic);
+  app.stage.addChild(graphic);
+	//var ctx = renderer.context;
+  
+  let canvas = app.renderer.plugins.extract.canvas(graphic);
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle="#FF0000";
+  ctx.fillRect(0,0,150,75);
+	
+	
+	
+	
+  var texture = PIXI.Texture.fromCanvas(canvas);
+  var cachedSprite = new PIXI.Sprite(texture);
+  app.stage.addChild(cachedSprite);
+	
+  //document.body.appendChild(canvas);
+
+  
+
+
+</script>
